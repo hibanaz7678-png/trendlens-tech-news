@@ -12,10 +12,12 @@ def analyze_headlines():
         print(f"Error: {file_path} not found.")
         return
 
+    # Filter out common filler words and generic tech terms
     stop_words = {
         "the", "a", "an", "to", "in", "for", "of", "and", "on", "with", 
         "is", "at", "by", "from", "it", "as", "that", "its", "are", "be",
-        "this", "was", "will", "has", "how", "why", "what", "about", "over"
+        "this", "was", "will", "has", "how", "why", "what", "about", "over",
+        "says", "app", "millions", "users", "face", "new", "more", "out"
     }
 
     words = []
@@ -29,7 +31,7 @@ def analyze_headlines():
     counts = Counter(words)
     top_10 = counts.most_common(10)
 
-    print("\n--- 🚀 Top 10 Trending Keywords in Tech News ---")
+    print("\n--- 🚀 Top Trending Tech Keywords ---")
     for word, count in top_10:
         print(f"• {word.capitalize()}: {count} mentions")
 
