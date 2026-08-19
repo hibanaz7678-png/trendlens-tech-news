@@ -4,6 +4,7 @@ import re
 
 def analyze_headlines():
     file_path = "data/headlines.json"
+    output_path = "data/trends.json"
     
     try:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -12,7 +13,7 @@ def analyze_headlines():
         print(f"Error: {file_path} not found.")
         return
 
-    # Filter out common filler words and generic tech terms
+    # Filter out common filler words and generic terms
     stop_words = {
         "the", "a", "an", "to", "in", "for", "of", "and", "on", "with", 
         "is", "at", "by", "from", "it", "as", "that", "its", "are", "be",
@@ -29,11 +30,16 @@ def analyze_headlines():
         words.extend(tokens)
 
     counts = Counter(words)
-    top_10 = counts.most_common(10)
+    top_10 = dict(counts.most_common(10))
+
+    # Save final counts to data/trends.json
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(top_10, f, indent=2)
 
     print("\n--- 🚀 Top Trending Tech Keywords ---")
-    for word, count in top_10:
+    for word, count in top_10.items():
         print(f"• {word.capitalize()}: {count} mentions")
+    print(f"\nSaved results to {output_path}")
 
 if __name__ == "__main__":
     analyze_headlines()
