@@ -1,6 +1,7 @@
 import json
-from collections import Counter
 import re
+from collections import Counter
+
 
 def analyze_headlines():
     file_path = "data/headlines.json"
@@ -42,4 +43,4 @@ def analyze_headlines():
     print(f"\nSaved results to {output_path}")
 
 if __name__ == "__main__":
-    analyze_headlines()
+    analyze_headlines()  
