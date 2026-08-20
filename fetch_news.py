@@ -3,7 +3,7 @@ import json
 import requests
 
 # Configuration
-API_KEY = "YOUR_API_KEY_HERE"
+API_KEY = "BRIGHTDATA_API_KEY"
 SNAPSHOT_ID = "j_mszx14o9266j4shfd2"
 
 def fetch_and_save_data():
